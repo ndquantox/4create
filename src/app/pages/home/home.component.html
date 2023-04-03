@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>4Create User Table</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users$ | async ">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>
+                    <label class="toggle">
+                        <input class="toggle-checkbox" type="checkbox" [checked]="user.active" (click)="editUser(user)">
+                        <div class="toggle-switch"></div>
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="button-wrapper">
+        <button *ngIf="highestId$ | async as highestId" (click)="openModal(highestId)" [disabled]="blockButton$ | async" [ngClass]="{'disabled': blockButton$ | async}">Add new user</button>
+    </div>
+</div>
+
+
+<div class="modal-wrap modal-closed" *ngIf="modalVisible" (click)="closeModal()">
+    <div class="modal-cnt-wrap" [formGroup]="userForm" >
+        <div class="modal-cnt" (click)="onEvent($event)">
+            <div class="inputs-wrapper">
+                <input type="text" placeholder="Name" formControlName="name">
+            </div>
+
+            <div class="button-wrapper">
+                <button (click)="add()" [disabled]="userForm.invalid" [ngClass]="{'disabled': userForm.invalid}">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

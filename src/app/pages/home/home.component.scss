@@ -1,0 +1,196 @@
+.container {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    td,
+    th {
+        padding-left: 8px;
+        text-align: left;
+    }
+
+    thead {
+        border: 1px solid #4d4d33;
+        border-bottom: 0;
+
+        tr {
+            height: 60px;
+            background: #8a8a5c;
+            font-size: 16px;
+        }
+    }
+
+    tbody {
+        border: 1px solid #ccccb3;
+        border-top: 0;
+
+        tr {
+            height: 48px;
+            border-bottom: 1px solid #E3F1D5;
+
+            &:last-child {
+                border: 0;
+            }
+        }
+    }
+
+    td {
+        .toggle {
+            cursor: pointer;
+            display: inline-block;
+
+            .toggle-switch {
+                display: inline-block;
+                background: #ccc;
+                border-radius: 16px;
+                width: 58px;
+                height: 32px;
+                position: relative;
+                vertical-align: middle;
+                transition: background 0.25s;
+            }
+
+            .toggle-switch:before,
+            .toggle-switch:after {
+                content: "";
+            }
+
+            .toggle-switch:before {
+                display: block;
+                background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+                border-radius: 50%;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+                width: 24px;
+                height: 24px;
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                transition: left 0.25s;
+            }
+
+            .toggle:hover .toggle-switch:before {
+                background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+            }
+
+            .toggle-checkbox:checked+.toggle-switch {
+                background: #56c080;
+            }
+
+            .toggle-checkbox:checked+.toggle-switch:before {
+                left: 30px;
+            }
+
+            .toggle-checkbox {
+                position: absolute;
+                visibility: hidden;
+            }
+
+            .toggle-label {
+                margin-left: 5px;
+                position: relative;
+                top: 2px;
+            }
+        }
+    }
+}
+
+.button-wrapper {
+    margin-top: 30px;
+    text-align: center;
+
+    button {
+        width: 140px;
+        height: 36px;
+        color: white;
+        border: 0;
+        background-color: #8a8a5c;
+        border-radius: 6px;
+        cursor: pointer;
+
+        &.disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+    }
+}
+
+.modal-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(#bfbfbf, 0.24);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    max-height: 100%;
+
+    .modal-cnt-wrap {
+        position: absolute;
+    }
+
+    .modal-cnt {
+        padding: 30px;
+        width: 500px;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        background: #FFFFFF;
+        border: 1px solid #F9F9F9;
+        box-shadow: 0px 15px 40px -10px rgba(0, 0, 0, 0.15);
+        border-radius: 9px;
+
+        .button-wrapper {
+
+            button {
+                width: 60%;
+            }
+        }
+
+
+        .inputs-wrapper {
+            margin-bottom: 17px;
+
+            input {
+                height: 43px;
+            }
+
+            input {
+                background: #f5f5ef;
+                box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.03);
+                border-radius: 9px;
+                border: 0;
+                padding-left: 15px;
+
+                &::placeholder {
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: #828C95;
+                }
+
+            }
+
+            input {
+                width: 100%;
+            }
+        }
+    }
+
+}
